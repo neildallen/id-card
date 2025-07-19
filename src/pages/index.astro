@@ -13,7 +13,7 @@ import Logo from "../../public/logo.png";
 
 		<!-- ✅ Safe config using window["tailwind"] -->
 		<script>
-			window["tailwind"] = {
+			window /** @type {any} */.tailwind = {
 				theme: {
 					extend: {
 						colors: {
