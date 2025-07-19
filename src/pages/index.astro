@@ -2,150 +2,148 @@
 import Logo from "../../public/logo.png";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Eyteen Plus</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+	<meta charset="UTF-8" />
+	<title>Eyteen Plus</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!-- ✅ Tailwind CDN -->
-		<script src="https://cdn.tailwindcss.com"></script>
+	<!-- ✅ Tailwind CDN -->
+	<script src="https://cdn.tailwindcss.com"></script>
 
-		<!-- ✅ Safe config using window["tailwind"] -->
-		<script>
-			window /** @type {any} */.tailwind = {
-				theme: {
-					extend: {
-						colors: {
-							eyteen: "#ff0000",
-						},
+	<!-- ✅ Safe config using window["tailwind"] -->
+	<script>
+		window["tailwind"] = {
+			theme: {
+				extend: {
+					colors: {
+						eyteen: "#ff0000",
 					},
 				},
-			};
-		</script>
+			},
+		};
+	</script>
 
-		<!-- ✅ Float Animation CSS -->
-		<style>
-			@keyframes float {
-				0% {
-					transform: translateY(0);
-				}
-				50% {
-					transform: translateY(-10px);
-				}
-				100% {
-					transform: translateY(0);
-				}
+	<!-- ✅ Float Animation CSS -->
+	<style>
+		@keyframes float {
+			0% {
+				transform: translateY(0);
 			}
-			.animate-float {
-				animation: float 4s ease-in-out infinite;
+			50% {
+				transform: translateY(-10px);
 			}
-		</style>
-	</head>
+			100% {
+				transform: translateY(0);
+			}
+		}
+		.animate-float {
+			animation: float 4s ease-in-out infinite;
+		}
+	</style>
+</head>
 
-	<body
-		class="bg-black text-white font-sans relative overflow-hidden min-h-screen"
+<div
+	class="bg-black text-white font-sans relative overflow-hidden min-h-screen"
+>
+	<!-- 🔴 Floating ID cards -->
+	<img
+		src="/diddy.png"
+		class="w-24 md:w-36 absolute top-10 left-4 animate-float hidden sm:block"
+	/>
+	<img
+		src="/trump.png"
+		class="w-24 md:w-36 absolute bottom-16 right-4 animate-float hidden sm:block"
+	/>
+	<img
+		src="/elon.png"
+		class="w-24 md:w-36 absolute top-[30%] right-[10%] animate-float hidden md:block"
+	/>
+
+	<!-- 🔴 Logo + Title -->
+	<div class="text-center pt-8 px-4">
+		<img src="/logo.png" alt="18+ Logo" class="w-12 inline-block" />
+		<h1
+			class="text-eyteen font-extrabold text-3xl sm:text-4xl tracking-wider mt-2"
+		>
+			EYTEEN PLUS
+		</h1>
+		<p class="mt-2 text-eyteen font-semibold text-sm sm:text-base">
+			CA: XXXXXXXXXXXXXXXXXXXXXX
+		</p>
+		<div class="mt-1 space-x-6 text-sm text-eyteen underline">
+			<a href="#">18+ COMMUNITY</a>
+			<a href="#">BUY $18+</a>
+		</div>
+	</div>
+
+	<!-- 🔴 Form -->
+	<div
+		class="bg-black text-white w-full max-w-xl mx-auto mt-8 p-6 rounded-lg shadow-lg z-10 px-4"
 	>
-		<!-- 🔴 Floating ID cards -->
-		<img
-			src="/diddy.png"
-			class="w-24 md:w-36 absolute top-10 left-4 animate-float hidden sm:block"
-		/>
-		<img
-			src="/trump.png"
-			class="w-24 md:w-36 absolute bottom-16 right-4 animate-float hidden sm:block"
-		/>
-		<img
-			src="/elon.png"
-			class="w-24 md:w-36 absolute top-[30%] right-[10%] animate-float hidden md:block"
-		/>
-
-		<!-- 🔴 Logo + Title -->
-		<div class="text-center pt-8 px-4">
-			<img src="/logo.png" alt="18+ Logo" class="w-12 inline-block" />
-			<h1
-				class="text-eyteen font-extrabold text-3xl sm:text-4xl tracking-wider mt-2"
-			>
-				EYTEEN PLUS
-			</h1>
-			<p class="mt-2 text-eyteen font-semibold text-sm sm:text-base">
-				CA: XXXXXXXXXXXXXXXXXXXXXX
-			</p>
-			<div class="mt-1 space-x-6 text-sm text-eyteen underline">
-				<a href="#">18+ COMMUNITY</a>
-				<a href="#">BUY $18+</a>
+		<form class="space-y-4">
+			<div>
+				<label class="block font-bold">Name:</label>
+				<input
+					type="text"
+					placeholder="Your name"
+					class="w-full p-2 bg-white text-black rounded"
+				/>
 			</div>
-		</div>
+			<div>
+				<label class="block font-bold">Sex:</label>
+				<select class="w-full p-2 bg-white text-black rounded">
+					<option>Yes</option>
+					<option>No</option>
+				</select>
+			</div>
+			<div>
+				<label class="block font-bold">D.O.B:</label>
+				<input type="date" class="w-full p-2 bg-white text-black rounded" />
+			</div>
+			<div>
+				<label class="block font-bold">Job:</label>
+				<select class="w-full p-2 bg-white text-black rounded">
+					<option>Trencher</option>
+					<option>KOL</option>
+					<option>Custom</option>
+				</select>
+			</div>
+			<div>
+				<label class="block font-bold">Photo:</label>
+				<input
+					type="file"
+					accept="image/*"
+					class="w-full p-2 bg-white text-black rounded"
+				/>
+			</div>
+			<button
+				type="submit"
+				class="w-full bg-white text-black font-bold py-2 rounded mt-4"
+			>
+				Generate ID
+			</button>
+		</form>
+	</div>
 
-		<!-- 🔴 Form -->
-		<div
-			class="bg-black text-white w-full max-w-xl mx-auto mt-8 p-6 rounded-lg shadow-lg z-10 px-4"
-		>
-			<form class="space-y-4">
-				<div>
-					<label class="block font-bold">Name:</label>
-					<input
-						type="text"
-						placeholder="Your name"
-						class="w-full p-2 bg-white text-black rounded"
-					/>
-				</div>
-				<div>
-					<label class="block font-bold">Sex:</label>
-					<select class="w-full p-2 bg-white text-black rounded">
-						<option>Yes</option>
-						<option>No</option>
-					</select>
-				</div>
-				<div>
-					<label class="block font-bold">D.O.B:</label>
-					<input type="date" class="w-full p-2 bg-white text-black rounded" />
-				</div>
-				<div>
-					<label class="block font-bold">Job:</label>
-					<select class="w-full p-2 bg-white text-black rounded">
-						<option>Trencher</option>
-						<option>KOL</option>
-						<option>Custom</option>
-					</select>
-				</div>
-				<div>
-					<label class="block font-bold">Photo:</label>
-					<input
-						type="file"
-						accept="image/*"
-						class="w-full p-2 bg-white text-black rounded"
-					/>
-				</div>
-				<button
-					type="submit"
-					class="w-full bg-white text-black font-bold py-2 rounded mt-4"
-				>
-					Generate ID
-				</button>
-			</form>
-		</div>
-
-		<!-- 🔴 Use Cases -->
-		<div
-			class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12 px-6 text-sm text-white"
-		>
-			<ul class="space-y-1 list-disc list-inside">
-				<li>
-					Access to the
-					<a href="#" class="text-eyteen underline">Eyteen Plus X Community</a>
-				</li>
-				<li>Talk to the 18+ Grok Companions (Ani & Bad Rudi)</li>
-				<li>OnlyFans</li>
-				<li>KYC</li>
-			</ul>
-			<ul class="space-y-1 list-disc list-inside">
-				<li>Get into a strip club</li>
-				<li>Buy alcohol</li>
-				<li>Renting a car</li>
-				<li>Voting</li>
-				<li>Gambling</li>
-			</ul>
-		</div>
-	</body>
-</html>
+	<!-- 🔴 Use Cases -->
+	<div
+		class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12 px-6 text-sm text-white"
+	>
+		<ul class="space-y-1 list-disc list-inside">
+			<li>
+				Access to the
+				<a href="#" class="text-eyteen underline">Eyteen Plus X Community</a>
+			</li>
+			<li>Talk to the 18+ Grok Companions (Ani & Bad Rudi)</li>
+			<li>OnlyFans</li>
+			<li>KYC</li>
+		</ul>
+		<ul class="space-y-1 list-disc list-inside">
+			<li>Get into a strip club</li>
+			<li>Buy alcohol</li>
+			<li>Renting a car</li>
+			<li>Voting</li>
+			<li>Gambling</li>
+		</ul>
+	</div>
+</div>
