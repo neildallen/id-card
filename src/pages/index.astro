@@ -1,16 +1,132 @@
 ---
-
+import Logo from "../../public/logo.png";
 ---
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta charset="UTF-8" />
+		<title>Eyteen Plus ID</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="bg-black text-white font-sans relative overflow-hidden">
+		<!-- 🔴 Floating Animated ID Cards -->
+		<img
+			src="/diddy.png"
+			class="w-24 md:w-36 absolute top-10 left-4 animate-float hidden sm:block"
+		/>
+		<img
+			src="/trump.png"
+			class="w-24 md:w-36 absolute bottom-16 right-4 animate-float hidden sm:block"
+		/>
+		<img
+			src="/elon.png"
+			class="w-24 md:w-36 absolute top-[30%] right-[10%] animate-float hidden md:block"
+		/>
+
+		<!-- 🔴 Logo and Headline -->
+		<div class="text-center pt-8">
+			<img src="/logo.png" alt="18+ Logo" class="w-12 inline-block" />
+			<h1
+				class="text-red-600 font-extrabold text-2xl sm:text-3xl tracking-wider mt-2"
+			>
+				EYTEEN PLUS
+			</h1>
+			<p class="mt-2 text-red-400 font-semibold">CA: XXXXXXXXXXXXXXXXXXXXXX</p>
+			<div class="mt-1 space-x-6 text-sm text-red-400 underline">
+				<a href="#">18+ COMMUNITY</a>
+				<a href="#">BUY $18+</a>
+			</div>
+		</div>
+
+		<!-- 🔴 Form -->
+		<div
+			class="bg-black text-white w-full max-w-xl mx-auto mt-8 p-6 rounded-lg shadow-lg z-10"
+		>
+			<form class="space-y-4">
+				<div>
+					<label class="block font-bold">Name:</label>
+					<input
+						type="text"
+						placeholder="Your name"
+						class="w-full p-2 bg-white text-black rounded"
+					/>
+				</div>
+				<div>
+					<label class="block font-bold">Sex:</label>
+					<select class="w-full p-2 bg-white text-black rounded">
+						<option>Yes</option>
+						<option>No</option>
+					</select>
+				</div>
+				<div>
+					<label class="block font-bold">D.O.B:</label>
+					<input type="date" class="w-full p-2 bg-white text-black rounded" />
+				</div>
+				<div>
+					<label class="block font-bold">Job:</label>
+					<select class="w-full p-2 bg-white text-black rounded">
+						<option>Trencher</option>
+						<option>KOL</option>
+						<option>Custom</option>
+					</select>
+				</div>
+				<div>
+					<label class="block font-bold">Photo:</label>
+					<input
+						type="file"
+						accept="image/*"
+						class="w-full p-2 bg-white text-black rounded"
+					/>
+				</div>
+
+				<button
+					type="submit"
+					class="w-full bg-white text-black font-bold py-2 rounded mt-4"
+				>
+					Generate ID
+				</button>
+			</form>
+		</div>
+
+		<!-- 🔴 Use Case Grid -->
+		<div
+			class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12 px-4 text-sm text-white"
+		>
+			<ul class="space-y-1 list-disc list-inside">
+				<li>
+					Access to the
+					<a href="#" class="text-red-400 underline">Eyteen Plus X Community</a>
+				</li>
+				<li>Talk to the 18+ Grok Companions (Ani & Bad Rudi)</li>
+				<li>OnlyFans</li>
+				<li>KYC</li>
+			</ul>
+			<ul class="space-y-1 list-disc list-inside">
+				<li>Get into a strip club</li>
+				<li>Buy alcohol</li>
+				<li>Renting a car</li>
+				<li>Voting</li>
+				<li>Gambling</li>
+			</ul>
+		</div>
+
+		<!-- 🔴 Animation -->
+		<style>
+			@keyframes float {
+				0% {
+					transform: translateY(0);
+				}
+				50% {
+					transform: translateY(-10px);
+				}
+				100% {
+					transform: translateY(0);
+				}
+			}
+
+			.animate-float {
+				animation: float 4s ease-in-out infinite;
+			}
+		</style>
 	</body>
 </html>
