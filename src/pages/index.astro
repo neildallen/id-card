@@ -10,8 +10,10 @@ import Logo from "../../public/logo.png";
 
 		<!-- ✅ Tailwind CDN -->
 		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- ✅ Safe config using window["tailwind"] -->
 		<script>
-			tailwind.config = {
+			window["tailwind"] = {
 				theme: {
 					extend: {
 						colors: {
@@ -22,6 +24,7 @@ import Logo from "../../public/logo.png";
 			};
 		</script>
 
+		<!-- ✅ Float Animation CSS -->
 		<style>
 			@keyframes float {
 				0% {
@@ -34,7 +37,6 @@ import Logo from "../../public/logo.png";
 					transform: translateY(0);
 				}
 			}
-
 			.animate-float {
 				animation: float 4s ease-in-out infinite;
 			}
@@ -44,7 +46,7 @@ import Logo from "../../public/logo.png";
 	<body
 		class="bg-black text-white font-sans relative overflow-hidden min-h-screen"
 	>
-		<!-- 🔴 Floating Animated ID Cards -->
+		<!-- 🔴 Floating ID cards -->
 		<img
 			src="/diddy.png"
 			class="w-24 md:w-36 absolute top-10 left-4 animate-float hidden sm:block"
@@ -58,7 +60,7 @@ import Logo from "../../public/logo.png";
 			class="w-24 md:w-36 absolute top-[30%] right-[10%] animate-float hidden md:block"
 		/>
 
-		<!-- 🔴 Logo and Headline -->
+		<!-- 🔴 Logo + Title -->
 		<div class="text-center pt-8 px-4">
 			<img src="/logo.png" alt="18+ Logo" class="w-12 inline-block" />
 			<h1
@@ -115,7 +117,6 @@ import Logo from "../../public/logo.png";
 						class="w-full p-2 bg-white text-black rounded"
 					/>
 				</div>
-
 				<button
 					type="submit"
 					class="w-full bg-white text-black font-bold py-2 rounded mt-4"
@@ -125,15 +126,14 @@ import Logo from "../../public/logo.png";
 			</form>
 		</div>
 
-		<!-- 🔴 Use Case Grid -->
+		<!-- 🔴 Use Cases -->
 		<div
 			class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12 px-6 text-sm text-white"
 		>
 			<ul class="space-y-1 list-disc list-inside">
 				<li>
-					Access to the <a href="#" class="text-eyteen underline"
-						>Eyteen Plus X Community</a
-					>
+					Access to the
+					<a href="#" class="text-eyteen underline">Eyteen Plus X Community</a>
 				</li>
 				<li>Talk to the 18+ Grok Companions (Ani & Bad Rudi)</li>
 				<li>OnlyFans</li>
