@@ -5,10 +5,45 @@ import Logo from "../../public/logo.png";
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Eyteen Plus ID</title>
+		<title>Eyteen Plus</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- ✅ Tailwind CDN -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							eyteen: "#ff0000",
+						},
+					},
+				},
+			};
+		</script>
+
+		<style>
+			@keyframes float {
+				0% {
+					transform: translateY(0);
+				}
+				50% {
+					transform: translateY(-10px);
+				}
+				100% {
+					transform: translateY(0);
+				}
+			}
+
+			.animate-float {
+				animation: float 4s ease-in-out infinite;
+			}
+		</style>
 	</head>
-	<body class="bg-black text-white font-sans relative overflow-hidden">
+
+	<body
+		class="bg-black text-white font-sans relative overflow-hidden min-h-screen"
+	>
 		<!-- 🔴 Floating Animated ID Cards -->
 		<img
 			src="/diddy.png"
@@ -24,15 +59,17 @@ import Logo from "../../public/logo.png";
 		/>
 
 		<!-- 🔴 Logo and Headline -->
-		<div class="text-center pt-8">
+		<div class="text-center pt-8 px-4">
 			<img src="/logo.png" alt="18+ Logo" class="w-12 inline-block" />
 			<h1
-				class="text-red-600 font-extrabold text-2xl sm:text-3xl tracking-wider mt-2"
+				class="text-eyteen font-extrabold text-3xl sm:text-4xl tracking-wider mt-2"
 			>
 				EYTEEN PLUS
 			</h1>
-			<p class="mt-2 text-red-400 font-semibold">CA: XXXXXXXXXXXXXXXXXXXXXX</p>
-			<div class="mt-1 space-x-6 text-sm text-red-400 underline">
+			<p class="mt-2 text-eyteen font-semibold text-sm sm:text-base">
+				CA: XXXXXXXXXXXXXXXXXXXXXX
+			</p>
+			<div class="mt-1 space-x-6 text-sm text-eyteen underline">
 				<a href="#">18+ COMMUNITY</a>
 				<a href="#">BUY $18+</a>
 			</div>
@@ -40,7 +77,7 @@ import Logo from "../../public/logo.png";
 
 		<!-- 🔴 Form -->
 		<div
-			class="bg-black text-white w-full max-w-xl mx-auto mt-8 p-6 rounded-lg shadow-lg z-10"
+			class="bg-black text-white w-full max-w-xl mx-auto mt-8 p-6 rounded-lg shadow-lg z-10 px-4"
 		>
 			<form class="space-y-4">
 				<div>
@@ -90,12 +127,13 @@ import Logo from "../../public/logo.png";
 
 		<!-- 🔴 Use Case Grid -->
 		<div
-			class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12 px-4 text-sm text-white"
+			class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12 px-6 text-sm text-white"
 		>
 			<ul class="space-y-1 list-disc list-inside">
 				<li>
-					Access to the
-					<a href="#" class="text-red-400 underline">Eyteen Plus X Community</a>
+					Access to the <a href="#" class="text-eyteen underline"
+						>Eyteen Plus X Community</a
+					>
 				</li>
 				<li>Talk to the 18+ Grok Companions (Ani & Bad Rudi)</li>
 				<li>OnlyFans</li>
@@ -109,24 +147,5 @@ import Logo from "../../public/logo.png";
 				<li>Gambling</li>
 			</ul>
 		</div>
-
-		<!-- 🔴 Animation -->
-		<style>
-			@keyframes float {
-				0% {
-					transform: translateY(0);
-				}
-				50% {
-					transform: translateY(-10px);
-				}
-				100% {
-					transform: translateY(0);
-				}
-			}
-
-			.animate-float {
-				animation: float 4s ease-in-out infinite;
-			}
-		</style>
 	</body>
 </html>
