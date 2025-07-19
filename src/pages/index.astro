@@ -1,121 +1,109 @@
 ---
-import Logo from "../../public/logo.png";
+import "../styles/global.css";
 ---
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Eyteen Plus</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-	<!-- ✅ Tailwind CDN -->
-	<script src="https://cdn.tailwindcss.com"></script>
-
-	<!-- ✅ Safe config using window["tailwind"] -->
-	<script>
-		window["tailwind"] = {
-			theme: {
-				extend: {
-					colors: {
-						eyteen: "#ff0000",
-					},
-				},
-			},
-		};
-	</script>
-
-	<!-- ✅ Float Animation CSS -->
-	<style>
-		@keyframes float {
-			0% {
-				transform: translateY(0);
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Eyteen Plus</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+			@keyframes float {
+				0% {
+					transform: translateY(0);
+				}
+				50% {
+					transform: translateY(-10px);
+				}
+				100% {
+					transform: translateY(0);
+				}
 			}
-			50% {
-				transform: translateY(-10px);
+			.animate-float {
+				animation: float 4s ease-in-out infinite;
 			}
-			100% {
-				transform: translateY(0);
-			}
-		}
-		.animate-float {
-			animation: float 4s ease-in-out infinite;
-		}
-	</style>
-</head>
+		</style>
+	</head>
 
-<div
-	class="bg-black text-white font-sans relative overflow-hidden min-h-screen"
->
-	<!-- 🔴 Floating ID cards -->
-	<img
-		src="/diddy.png"
-		class="w-24 md:w-36 absolute top-10 left-4 animate-float hidden sm:block"
-	/>
-	<img
-		src="/trump.png"
-		class="w-24 md:w-36 absolute bottom-16 right-4 animate-float hidden sm:block"
-	/>
-	<img
-		src="/elon.png"
-		class="w-24 md:w-36 absolute top-[30%] right-[10%] animate-float hidden md:block"
-	/>
-
-	<!-- 🔴 Logo + Title -->
-	<div class="text-center pt-8 px-4">
-		<img src="/logo.png" alt="18+ Logo" class="w-12 inline-block" />
-		<h1
-			class="text-eyteen font-extrabold text-3xl sm:text-4xl tracking-wider mt-2"
-		>
-			EYTEEN PLUS
-		</h1>
-		<p class="mt-2 text-eyteen font-semibold text-sm sm:text-base">
-			CA: XXXXXXXXXXXXXXXXXXXXXX
-		</p>
-		<div class="mt-1 space-x-6 text-sm text-eyteen underline">
-			<a href="#">18+ COMMUNITY</a>
-			<a href="#">BUY $18+</a>
-		</div>
-	</div>
-
-	<!-- 🔴 Form -->
-	<div
-		class="bg-black text-white w-full max-w-xl mx-auto mt-8 p-6 rounded-lg shadow-lg z-10 px-4"
+	<body
+		class="bg-black text-white font-sans relative overflow-hidden min-h-screen"
 	>
-		<form class="space-y-4">
+		<!-- Header -->
+		<div class="text-center pt-8 px-4">
+			<img src="/logo.png" alt="Logo" class="w-12 inline-block" />
+			<h1
+				class="text-red-500 font-extrabold text-3xl sm:text-4xl mt-2 tracking-wider"
+			>
+				EYTEEN PLUS
+			</h1>
+			<p class="mt-2 text-red-500 font-semibold text-sm">
+				CA: XXXXXXXXXXXXXXXXXXXXXX
+			</p>
+			<div class="mt-1 space-x-6 text-sm text-red-500 underline">
+				<a href="#">18+ COMMUNITY</a>
+				<a href="#">BUY $18+</a>
+			</div>
+		</div>
+
+		<!-- Form -->
+		<form id="eyteenForm" class="max-w-xl mx-auto mt-10 space-y-4 px-4">
 			<div>
-				<label class="block font-bold">Name:</label>
+				<label for="name" class="block font-bold mb-1">Name:</label>
 				<input
+					id="name"
 					type="text"
 					placeholder="Your name"
 					class="w-full p-2 bg-white text-black rounded"
 				/>
 			</div>
+
 			<div>
-				<label class="block font-bold">Sex:</label>
-				<select class="w-full p-2 bg-white text-black rounded">
+				<label for="sex" class="block font-bold mb-1">Sex:</label>
+				<select id="sex" class="w-full p-2 bg-white text-black rounded">
 					<option>Yes</option>
 					<option>No</option>
 				</select>
 			</div>
+
 			<div>
-				<label class="block font-bold">D.O.B:</label>
-				<input type="date" class="w-full p-2 bg-white text-black rounded" />
+				<label for="age" class="block font-bold mb-1">Age (18+ Only):</label>
+				<input
+					id="age"
+					type="number"
+					min="18"
+					value="18"
+					class="w-full p-2 bg-white text-black rounded"
+				/>
 			</div>
+
 			<div>
-				<label class="block font-bold">Job:</label>
-				<select class="w-full p-2 bg-white text-black rounded">
+				<label for="job" class="block font-bold mb-1">Job:</label>
+				<select id="job" class="w-full p-2 bg-white text-black rounded">
 					<option>Trencher</option>
 					<option>KOL</option>
 					<option>Custom</option>
 				</select>
 			</div>
-			<div>
-				<label class="block font-bold">Photo:</label>
+
+			<div class="space-y-2">
+				<label for="photo" class="block font-bold mb-1">Photo:</label>
 				<input
+					id="photo"
 					type="file"
 					accept="image/*"
 					class="w-full p-2 bg-white text-black rounded"
 				/>
+				<button
+					type="button"
+					id="generateDalle"
+					class="w-full bg-red-500 text-white py-2 rounded"
+				>
+					🎨 Generate Image with DALL·E
+				</button>
 			</div>
+
 			<button
 				type="submit"
 				class="w-full bg-white text-black font-bold py-2 rounded mt-4"
@@ -123,27 +111,88 @@ import Logo from "../../public/logo.png";
 				Generate ID
 			</button>
 		</form>
-	</div>
 
-	<!-- 🔴 Use Cases -->
-	<div
-		class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12 px-6 text-sm text-white"
-	>
-		<ul class="space-y-1 list-disc list-inside">
-			<li>
-				Access to the
-				<a href="#" class="text-eyteen underline">Eyteen Plus X Community</a>
-			</li>
-			<li>Talk to the 18+ Grok Companions (Ani & Bad Rudi)</li>
-			<li>OnlyFans</li>
-			<li>KYC</li>
-		</ul>
-		<ul class="space-y-1 list-disc list-inside">
-			<li>Get into a strip club</li>
-			<li>Buy alcohol</li>
-			<li>Renting a car</li>
-			<li>Voting</li>
-			<li>Gambling</li>
-		</ul>
-	</div>
-</div>
+		<!-- ID Card -->
+		<div
+			id="idCard"
+			class="max-w-xl mx-auto mt-10 p-6 bg-white text-black rounded-lg shadow-md hidden"
+		>
+			<div class="flex items-center gap-4">
+				<img
+					id="previewImg"
+					src="/placeholder.png"
+					alt="Photo"
+					class="w-24 h-24 rounded object-cover border border-gray-400"
+				/>
+				<div class="text-sm">
+					<p><strong>Name:</strong> <span id="outName"></span></p>
+					<p><strong>Sex:</strong> <span id="outSex"></span></p>
+					<p><strong>Age:</strong> <span id="outAge"></span></p>
+					<p><strong>Job:</strong> <span id="outJob"></span></p>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			window.addEventListener("DOMContentLoaded", () => {
+				const form = document.getElementById("eyteenForm");
+				const previewImg = document.getElementById("previewImg");
+
+				form.addEventListener("submit", (e) => {
+					e.preventDefault();
+					const age = parseInt(document.getElementById("age").value, 10);
+					if (isNaN(age) || age < 18) {
+						alert("❌ You must be 18 or older.");
+						return;
+					}
+					document.getElementById("idCard").classList.remove("hidden");
+					document.getElementById("outName").textContent =
+						document.getElementById("name").value;
+					document.getElementById("outSex").textContent =
+						document.getElementById("sex").value;
+					document.getElementById("outAge").textContent = age;
+					document.getElementById("outJob").textContent =
+						document.getElementById("job").value;
+				});
+
+				document.getElementById("photo").addEventListener("change", (event) => {
+					const file = event.target.files[0];
+					if (file) {
+						const reader = new FileReader();
+						reader.onload = () => (previewImg.src = reader.result);
+						reader.readAsDataURL(file);
+					}
+				});
+
+				document
+					.getElementById("generateDalle")
+					.addEventListener("click", async () => {
+						const name = document.getElementById("name").value || "person";
+						const job = document.getElementById("job").value || "character";
+						const prompt = `anime cartoon style portrait of a ${job} named ${name}, smiling, ID photo, plain background`;
+
+						previewImg.src = "/placeholder.png";
+						try {
+							const res = await fetch("/api/generate-image", {
+								method: "POST",
+								headers: { "Content-Type": "application/json" },
+								body: JSON.stringify({ prompt }),
+							});
+
+							const data = await res.json();
+							if (data.imageUrl) {
+								previewImg.src = data.imageUrl;
+							} else {
+								throw new Error("No image URL");
+							}
+						} catch (err) {
+							console.error("Image generation error:", err);
+							alert(
+								"⚠️ DALL·E image generation failed — using placeholder instead.",
+							);
+						}
+					});
+			});
+		</script>
+	</body>
+</html>
