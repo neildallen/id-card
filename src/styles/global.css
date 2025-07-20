@@ -111,6 +111,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  border: 5px solid black;
   /* margin-top: 1rem; */
 }
 
