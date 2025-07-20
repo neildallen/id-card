@@ -7,7 +7,18 @@ import "../styles/global.css";
 		<meta charset="UTF-8" />
 		<title>Eyteen Plus</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script is:inline>
+			function copyCA() {
+				const caText = document.getElementById("ca-text").innerText;
+				navigator.clipboard
+					.writeText(caText)
+					.then(() => alert("CA copied to clipboard!"))
+					.catch(() => alert("Failed to copy."));
+			}
+		</script>
+
 		<link rel="stylesheet" href="/styles/global.css" />
+
 		<script
 			src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"
 		></script>
@@ -33,7 +44,8 @@ import "../styles/global.css";
 					onclick="copyCA()"
 					style="padding: 4px 10px; background: white; color: black; border: none; cursor: pointer; font-weight: bold;"
 				>
-					Copy CA</button>
+					Copy CA</button
+				>
 			</div>
 			<nav>
 				<a href="#">18+ COMMUNITY</a>

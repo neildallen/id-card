@@ -46,7 +46,7 @@ main {
 .bg-icons img {
   position: absolute;
   width: 350px;
-  opacity: 0.25;
+  opacity: 0.5;
 }
 
 /* Random scattered positions – customize/add more */
