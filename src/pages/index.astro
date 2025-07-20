@@ -256,17 +256,14 @@ import "../styles/global.css";
 			<!-- 
 			COPY CA SCRIPT -->
 			<script>
-				function copyCA() {
+				document.getElementById("copyCaBtn").addEventListener("click", () => {
 					const caText = document.getElementById("ca-text").innerText;
+					const actualCA = caText.replace(/^CA:\s*/, ""); // removes "CA: " prefix
 					navigator.clipboard
-						.writeText(caText)
-						.then(() => {
-							alert("CA copied to clipboard!");
-						})
-						.catch(() => {
-							alert("Failed to copy.");
-						});
-				}
+						.writeText(actualCA)
+						.then(() => alert("CA copied to clipboard!"))
+						.catch(() => alert("Failed to copy."));
+				});
 			</script>
 			<script is:inline>
 				window.addEventListener("DOMContentLoaded", () => {
