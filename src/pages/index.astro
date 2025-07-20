@@ -2,141 +2,167 @@
 import "../styles/global.css";
 ---
 
-<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<title>Eyteen Plus</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="https://cdn.tailwindcss.com"></script>
-		<style>
-			@keyframes float {
-				0% {
-					transform: translateY(0);
-				}
-				50% {
-					transform: translateY(-10px);
-				}
-				100% {
-					transform: translateY(0);
-				}
-			}
-			.animate-float {
-				animation: float 4s ease-in-out infinite;
-			}
-		</style>
+		<link rel="stylesheet" href="/styles/global.css" />
 	</head>
-
-	<body
-		class="bg-black text-white font-sans relative overflow-hidden min-h-screen"
-	>
-		<!-- Header -->
-		<div class="text-center pt-8 px-4">
-			<img src="/logo.png" alt="Logo" class="w-12 inline-block" />
-			<h1
-				class="text-red-500 font-extrabold text-3xl sm:text-4xl mt-2 tracking-wider"
-			>
-				EYTEEN PLUS
-			</h1>
-			<p class="mt-2 text-red-500 font-semibold text-sm">
-				CA: XXXXXXXXXXXXXXXXXXXXXX
-			</p>
-			<div class="mt-1 space-x-6 text-sm text-red-500 underline">
+	<body>
+		<div class="bg-icons">
+			<img src="/id-placeholder.jpg" alt="ID" />
+			<img src="/id-placeholder.jpg" alt="ID" />
+			<img src="/id-placeholder.jpg" alt="ID" />
+			<img src="/id-placeholder.jpg" alt="ID" />
+			<img src="/id-placeholder.jpg" alt="ID" />
+			<img src="/id-placeholder.jpg" alt="ID" />
+			<img src="/id-placeholder.jpg" alt="ID" />
+		</div>
+		<header class="header">
+			<img src="/logo.png" class="logo" alt="18+" />
+			<h1>EYTEEN PLUS</h1>
+			<p class="ca">CA: XXXXXXXXXXXXXXXXXXXXX</p>
+			<nav>
 				<a href="#">18+ COMMUNITY</a>
 				<a href="#">BUY $18+</a>
-			</div>
-		</div>
+			</nav>
+		</header>
 
-		<!-- Form -->
-		<form id="eyteenForm" class="max-w-xl mx-auto mt-10 space-y-4 px-4">
-			<div>
-				<label for="name" class="block font-bold mb-1">Name:</label>
-				<input
-					id="name"
-					type="text"
-					placeholder="Your name"
-					class="w-full p-2 bg-white text-black rounded"
-				/>
-			</div>
+		<main>
+			<form id="eyteenForm" class="id-form">
+				<div class="form-row">
+					<label
+						>Gender:
+						<select id="sex">
+							<option>Male</option>
+							<option>Female</option>
+							<option>Other</option>
+						</select>
+					</label>
 
-			<div>
-				<label for="sex" class="block font-bold mb-1">Sex:</label>
-				<select id="sex" class="w-full p-2 bg-white text-black rounded">
-					<option>Yes</option>
-					<option>No</option>
-				</select>
-			</div>
-
-			<div>
-				<label for="age" class="block font-bold mb-1">Age (18+ Only):</label>
-				<input
-					id="age"
-					type="number"
-					min="18"
-					value="18"
-					class="w-full p-2 bg-white text-black rounded"
-				/>
-			</div>
-
-			<div>
-				<label for="job" class="block font-bold mb-1">Job:</label>
-				<select id="job" class="w-full p-2 bg-white text-black rounded">
-					<option>Trencher</option>
-					<option>KOL</option>
-					<option>Custom</option>
-				</select>
-			</div>
-
-			<div class="space-y-2">
-				<label for="photo" class="block font-bold mb-1">Photo:</label>
-				<input
-					id="photo"
-					type="file"
-					accept="image/*"
-					class="w-full p-2 bg-white text-black rounded"
-				/>
-				<button
-					type="button"
-					id="generateDalle"
-					class="w-full bg-red-500 text-white py-2 rounded"
-				>
-					🎨 Generate Image with DALL·E
-				</button>
-			</div>
-
-			<button
-				type="submit"
-				class="w-full bg-white text-black font-bold py-2 rounded mt-4"
-			>
-				Generate ID
-			</button>
-		</form>
-
-		<!-- ID Card -->
-		<div
-			id="idCard"
-			class="max-w-xl mx-auto mt-10 p-6 bg-white text-black rounded-lg shadow-md hidden"
-		>
-			<div class="flex items-center gap-4">
-				<img
-					id="previewImg"
-					src="/placeholder.png"
-					alt="Photo"
-					class="w-24 h-24 rounded object-cover border border-gray-400"
-				/>
-				<div class="text-sm">
-					<p><strong>Name:</strong> <span id="outName"></span></p>
-					<p><strong>Sex:</strong> <span id="outSex"></span></p>
-					<p><strong>Age:</strong> <span id="outAge"></span></p>
-					<p><strong>Job:</strong> <span id="outJob"></span></p>
+					<label
+						>Ethnicity:
+						<select id="ethnicity">
+							<option>White</option>
+							<option>Black</option>
+							<option>Asian</option>
+							<option>Mixed</option>
+							<option>Other</option>
+						</select>
+					</label>
 				</div>
-			</div>
-		</div>
 
-		<script>
+				<div class="form-row">
+					<label
+						>Hair Color:
+						<select id="hair">
+							<option>Blonde</option>
+							<option>Brown</option>
+							<option>Black</option>
+							<option>Red</option>
+							<option>Gray</option>
+							<option>Other</option>
+						</select>
+					</label>
+
+					<label
+						>Eye Color:
+						<select id="eyes">
+							<option>Blue</option>
+							<option>Brown</option>
+							<option>Green</option>
+							<option>Hazel</option>
+							<option>Gray</option>
+						</select>
+					</label>
+				</div>
+
+				<div class="form-row">
+					<label
+						>Character Style:
+						<select id="style">
+							<option>Cyberpunk</option>
+							<option>Fantasy</option>
+							<option>Realistic</option>
+							<option>Cartoon</option>
+							<option>Pixel Art</option>
+							<option>Other</option>
+						</select>
+					</label>
+
+					<label
+						>Name:
+						<input type="text" id="name" placeholder="e.g. John Doe" />
+					</label>
+				</div>
+
+				<div class="form-row">
+					<label>
+						Age (18+ Only):
+						<input type="number" id="age" min="18" value="18" />
+					</label>
+
+					<label>
+						Job:
+						<select id="job">
+							<option value="Trencher">Trencher</option>
+							<option value="KOL">KOL</option>
+							<option value="custom">Custom</option>
+						</select>
+					</label>
+				</div>
+
+				<label id="customJobLabel" style="display:none;">
+					Custom Job:
+					<input type="text" id="customJob" placeholder="Enter custom job" />
+				</label>
+
+				<p class="img-or-upload">Generate an image or upload your own</p>
+
+				<button type="button" id="generateDalle"
+					>🎨 Generate Image with DALL·E</button
+				>
+
+				<label
+					>Upload Your Own:
+					<input type="file" id="photo" accept="image/*" />
+				</label>
+
+				<button type="submit">Generate ID</button>
+			</form>
+
+			<section class="id-card" id="idCard" style="display:none">
+				<img src="/id-placeholder.jpg" id="previewImg" />
+				<div><strong>Name:</strong> <span id="outName"></span></div>
+				<div><strong>Sex:</strong> <span id="outSex"></span></div>
+				<div><strong>Age:</strong> <span id="outAge"></span></div>
+				<div><strong>Job:</strong> <span id="outJob"></span></div>
+			</section>
+		</main>
+
+		<footer class="footer">
+			<p>YOU CAN USE THIS LICENSE FOR MANY THINGS:</p>
+			<ul>
+				<li>✅ ONLYFANS</li>
+				<li>✅ KYC</li>
+				<li>✅ STRIP CLUBS</li>
+				<li>✅ BUY ALCOHOL</li>
+				<li>✅ TALK TO 18+ COMPANIONS</li>
+			</ul>
+		</footer>
+
+		<script is:inline>
 			window.addEventListener("DOMContentLoaded", () => {
 				const form = document.getElementById("eyteenForm");
 				const previewImg = document.getElementById("previewImg");
+				const jobDropdown = document.getElementById("job");
+				const customJobField = document.getElementById("customJobLabel");
+
+				jobDropdown.addEventListener("change", () => {
+					customJobField.style.display =
+						jobDropdown.value === "custom" ? "block" : "none";
+				});
 
 				form.addEventListener("submit", (e) => {
 					e.preventDefault();
@@ -145,14 +171,19 @@ import "../styles/global.css";
 						alert("❌ You must be 18 or older.");
 						return;
 					}
-					document.getElementById("idCard").classList.remove("hidden");
+
+					const job =
+						jobDropdown.value === "custom"
+							? document.getElementById("customJob").value
+							: jobDropdown.value;
+
+					document.getElementById("idCard").style.display = "block";
 					document.getElementById("outName").textContent =
 						document.getElementById("name").value;
 					document.getElementById("outSex").textContent =
 						document.getElementById("sex").value;
 					document.getElementById("outAge").textContent = age;
-					document.getElementById("outJob").textContent =
-						document.getElementById("job").value;
+					document.getElementById("outJob").textContent = job;
 				});
 
 				document.getElementById("photo").addEventListener("change", (event) => {
@@ -168,10 +199,11 @@ import "../styles/global.css";
 					.getElementById("generateDalle")
 					.addEventListener("click", async () => {
 						const name = document.getElementById("name").value || "person";
-						const job = document.getElementById("job").value || "character";
+						const job = jobDropdown.value || "character";
 						const prompt = `anime cartoon style portrait of a ${job} named ${name}, smiling, ID photo, plain background`;
 
-						previewImg.src = "/placeholder.png";
+						previewImg.src = "/id-placeholder.jpg";
+
 						try {
 							const res = await fetch("/api/generate-image", {
 								method: "POST",
@@ -183,7 +215,7 @@ import "../styles/global.css";
 							if (data.imageUrl) {
 								previewImg.src = data.imageUrl;
 							} else {
-								throw new Error("No image URL");
+								throw new Error("No image URL returned");
 							}
 						} catch (err) {
 							console.error("Image generation error:", err);

@@ -1,1 +1,182 @@
-@import "tailwindcss";
+@media (max-width: 480px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+
+/* New background container for scattered ID cards */
+.bg-icons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-icons img {
+  position: absolute;
+  width: 250px;
+  opacity: 0.25;
+}
+
+/* Random scattered positions – customize/add more */
+.bg-icons img:nth-child(1) {
+  top: 5%;
+  left: 10%;
+  transform: rotate(-15deg);
+}
+
+.bg-icons img:nth-child(2) {
+  top: 20%;
+  left: 70%;
+  transform: rotate(10deg);
+}
+
+.bg-icons img:nth-child(3) {
+  top: 40%;
+  left: 25%;
+  transform: rotate(-5deg);
+}
+
+.bg-icons img:nth-child(4) {
+  top: 60%;
+  left: 60%;
+  transform: rotate(8deg);
+}
+
+.bg-icons img:nth-child(5) {
+  top: 75%;
+  left: 15%;
+  transform: rotate(-12deg);
+}
+
+.bg-icons img:nth-child(6) {
+  top: 80%;
+  left: 80%;
+  transform: rotate(20deg);
+}
+
+.bg-icons img:nth-child(7) {
+  top: 30%;
+  left: 50%;
+  transform: rotate(-18deg);
+}
+
+/* Overall form layout */
+.id-form {
+  background: white;
+  color: black;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Form rows (2-column layout) */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Labels inside row */
+.form-row label {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Input and select fields */
+.id-form input,
+.id-form select {
+  padding: 0.6rem;
+  font-size: 1rem;
+  margin-top: 0.4rem;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Individual labels (like for Job or Age) */
+.id-form label {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Logo spacing fix */
+.header img.logo {
+  width: 60px;
+  margin: 1rem auto 0.5rem;
+}
+
+/* Footer list styling */
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.footer li {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+/* DALL·E line text */
+.img-or-upload {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #444;
+  margin-bottom: -0.5rem;
+}
+
+/* Buttons */
+.id-form button {
+  background: rgb(185, 1, 1);
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.75rem;
+  border: none;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.id-form button:hover {
+  background: black;
+}
+
+.header nav a {
+  color: red;
+  text-decoration: underline;
+  margin: 0 0.5rem;
+}
+
+.header nav a:hover {
+  color: #ff4d4d;
+}
