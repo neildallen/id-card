@@ -41,7 +41,7 @@ import "../styles/global.css";
 			<div style="display: inline-flex; align-items: center; gap: 10px;">
 				<p class="ca ca-text" id="ca-text">CA: XXXXXXXXXXXXXXXXXXXXX</p>
 				<button
-					onclick="copyCA()"
+					id="copyCaBtn"
 					style="padding: 4px 10px; background: white; color: black; border: none; cursor: pointer; font-weight: bold;"
 				>
 					Copy CA</button
@@ -255,16 +255,25 @@ import "../styles/global.css";
 			</footer>
 			<!-- 
 			COPY CA SCRIPT -->
+			<!-- COPY CA SCRIPT -->
 			<script>
-				document.getElementById("copyCaBtn").addEventListener("click", () => {
-					const caText = document.getElementById("ca-text").innerText;
-					const actualCA = caText.replace(/^CA:\s*/, ""); // removes "CA: " prefix
-					navigator.clipboard
-						.writeText(actualCA)
-						.then(() => alert("CA copied to clipboard!"))
-						.catch(() => alert("Failed to copy."));
+				document.addEventListener("DOMContentLoaded", () => {
+					const btn = document.getElementById("copyCaBtn");
+					const caTextElem = document.getElementById("ca-text");
+
+					if (btn && caTextElem) {
+						btn.addEventListener("click", () => {
+							const raw = caTextElem.innerText;
+							const actualCA = raw.replace(/^CA:\s*/, "").trim(); // removes "CA: " and any space
+							navigator.clipboard
+								.writeText(actualCA)
+								.then(() => alert("CA copied to clipboard!"))
+								.catch(() => alert("Failed to copy CA."));
+						});
+					}
 				});
 			</script>
+
 			<script is:inline>
 				window.addEventListener("DOMContentLoaded", () => {
 					const form = document.getElementById("eyteenForm");
