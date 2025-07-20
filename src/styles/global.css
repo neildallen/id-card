@@ -329,6 +329,21 @@ main {
   }
 }
 
+#loading-warning,
+.pulse-warning {
+  font-size: 1.5em;
+  color: #111;
+  background: #e53935;
+  border: 3px solid #ff5252;
+  border-radius: 8px;
+  padding: 0.7em 1.5em;
+  font-weight: bold;
+  box-shadow: 0 0 16px 4px #ff5252cc;
+  animation: pulse 1s infinite;
+  display: inline-block;
+  margin: 1em auto;
+}
+
 .idcard-uses-list-container {
   width: 100%;
   margin: 2.5em 0 2em 0;
