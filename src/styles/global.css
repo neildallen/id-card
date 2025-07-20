@@ -66,7 +66,7 @@ main {
 
 .bg-icons img:nth-child(3) {
   top: 50%;
-  right: 0%;
+  right: 2%;
   transform: rotate(-5deg);
 }
 
