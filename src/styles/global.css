@@ -4,6 +4,11 @@
   }
 }
 
+.ca {
+  font-size: 28px;
+}
+
+
 body {
   background-color: #000;
   color: #fff;
@@ -36,32 +41,34 @@ main {
 
 .bg-icons img {
   position: absolute;
-  width: 250px;
+  width: 350px;
   opacity: 0.25;
 }
 
 /* Random scattered positions – customize/add more */
 .bg-icons img:nth-child(1) {
-  top: 5%;
+  top: 0%;
   left: 10%;
-  transform: rotate(-15deg);
+  transform: rotate(18deg);
 }
 
 .bg-icons img:nth-child(2) {
-  top: 20%;
+  top: 25%;
   left: 70%;
   transform: rotate(10deg);
 }
 
+
+
 .bg-icons img:nth-child(3) {
-  top: 40%;
-  left: 25%;
+  top: 50%;
+  right: 0%;
   transform: rotate(-5deg);
 }
 
 .bg-icons img:nth-child(4) {
-  top: 60%;
-  left: 60%;
+  top: 50%;
+  left: 2%;
   transform: rotate(8deg);
 }
 
@@ -78,9 +85,15 @@ main {
 }
 
 .bg-icons img:nth-child(7) {
-  top: 30%;
-  left: 50%;
+  top: 25%;
+  left: 10%;
   transform: rotate(-18deg);
+}
+
+.bg-icons img:nth-child(8) {
+  top: 0%;
+  right: 5%;
+  transform: rotate(18deg);
 }
 
 /* Overall form layout */
@@ -107,7 +120,7 @@ main {
 /* Labels inside row */
 .form-row label {
   flex: 1;
-  min-width: 0;
+  min-width: 42%;
 }
 
 /* Input and select fields */
@@ -116,7 +129,7 @@ main {
   padding: 0.6rem;
   font-size: 1rem;
   margin-top: 0.4rem;
-  width: 100%;
+  width: 90%;
   border: 1px solid #ccc;
   border-radius: 6px;
 }
@@ -131,7 +144,7 @@ main {
 
 /* Logo spacing fix */
 .header img.logo {
-  width: 60px;
+  width: 120px;
   margin: 1rem auto 0.5rem;
 }
 
@@ -179,4 +192,42 @@ main {
 
 .header nav a:hover {
   color: #ff4d4d;
+}
+
+.id-card {
+  background: white;
+  color: black;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+#cardContent {
+  background: #fff;
+  padding: 1rem;
+  border: 2px solid #000;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+}
+
+#cardContent img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+#downloadBtn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #b90101;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }

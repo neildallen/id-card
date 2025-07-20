@@ -11,16 +11,18 @@ export async function POST({ request }) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "dall-e-3",
+        model: "dall-e-2",        // ✅ DALL·E 2 instead of 3
         prompt,
         n: 1,
-        size: "256x256"
+        size: "256x256",          // Good balance of cost and speed
+        response_format: "url"    // ✅ Required to get a usable image link
       })
     });
 
     const data = await response.json();
 
-    if (!data.data || !data.data[0] || !data.data[0].url) {
+    if (!data.data || !data.data[0]?.url) {
+      console.error("OpenAI returned unexpected response:", data);
       return new Response(JSON.stringify({ error: "No image returned" }), { status: 500 });
     }
 
