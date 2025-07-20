@@ -15,13 +15,13 @@ import "../styles/global.css";
 	<body>
 		<div class="bg-icons">
 			<img src="/id-1.png" alt="ID" />
-			<img src="/id-placeholder.jpg" alt="ID" />
-			<img src="/id-placeholder.jpg" alt="ID" />
-			<img src="/id-placeholder.jpg" alt="ID" />
-			<img src="/id-placeholder.jpg" alt="ID" />
-			<img src="/id-placeholder.jpg" alt="ID" />
-			<img src="/id-placeholder.jpg" alt="ID" />
-			<img src="/id-placeholder.jpg" alt="ID" />
+			<img src="/id-2.png" alt="ID" />
+			<img src="/id-3.png" alt="ID" />
+			<img src="/id-4.png" alt="ID" />
+			<img src="/id-1.png" alt="ID" />
+			<img src="/id-1.png" alt="ID" />
+			<img src="/id-1.png" alt="ID" />
+			<img src="/id-1.png" alt="ID" />
 		</div>
 
 		<header class="header">
@@ -403,7 +403,7 @@ import "../styles/global.css";
 						const address = generateRandomAddress();
 						const style =
 							document.getElementById("style").value || "digital painting";
-						const prompt = `${style} headshot ID photo of a ${sex.toLowerCase()} ${ethnicity.toLowerCase()} with ${hair.toLowerCase()} hair and ${eyes.toLowerCase()} eyes, profession: ${job.toLowerCase()}, name: ${name}, white background, centered face`;
+						const prompt = `${style} headshot ID photo of a ${age}-year-old ${sex.toLowerCase()} ${ethnicity.toLowerCase()} with ${hair.toLowerCase()} hair and ${eyes.toLowerCase()} eyes, profession: ${job.toLowerCase()}, name: ${name}, white background, centered face`;
 
 						try {
 							const res = await fetch("/api/generate-image", {
