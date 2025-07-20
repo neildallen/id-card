@@ -27,13 +27,14 @@ import "../styles/global.css";
 		<header class="header">
 			<img src="/logo.png" class="logo" alt="18+" />
 			<h1>EYTEEN PLUS</h1>
-			<p class="ca ca-text">CA: XXXXXXXXXXXXXXXXXXXXX</p>
-			<button
-				onclick="copyCA()"
-				style="padding: 4px 10px; background: white; color: black; border: none; cursor: pointer; font-weight: bold;"
-			>
-				Copy CA</button
-			>
+			<div style="display: inline-flex; align-items: center; gap: 10px;">
+				<p class="ca ca-text" id="ca-text">CA: XXXXXXXXXXXXXXXXXXXXX</p>
+				<button
+					onclick="copyCA()"
+					style="padding: 4px 10px; background: white; color: black; border: none; cursor: pointer; font-weight: bold;"
+				>
+					Copy CA</button>
+			</div>
 			<nav>
 				<a href="#">18+ COMMUNITY</a>
 				<a href="#">BUY $18+</a>
