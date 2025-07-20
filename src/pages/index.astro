@@ -35,6 +35,13 @@ import "../styles/global.css";
 		</header>
 
 		<main>
+			<div
+				id="loading-warning"
+				class="pulse-warning"
+				style="display:none; color: red; font-weight: bold; text-align: center; margin-bottom: 1em;"
+			>
+				⚠️ Image generating... please wait!
+			</div>
 			<form id="eyteenForm" class="id-form">
 				<div class="form-row">
 					<label>
@@ -133,19 +140,89 @@ import "../styles/global.css";
 			</form>
 
 			<section id="idCard" class="id-card" style="display: none;">
-				<div id="cardContent">
-					<img src="/id-placeholder.jpg" id="previewImg" alt="ID Photo" />
-					<div><strong>Name:</strong> <span id="outName"></span></div>
-					<div><strong>Sex:</strong> <span id="outSex"></span></div>
-					<div><strong>Age:</strong> <span id="outAge"></span></div>
-					<div><strong>Hair:</strong> <span id="outHair"></span></div>
-					<div><strong>Eyes:</strong> <span id="outEyes"></span></div>
-					<div><strong>Ethnicity:</strong> <span id="outEthnicity"></span></div>
-					<div><strong>Job:</strong> <span id="outJob"></span></div>
-					<div><strong>Address:</strong> <span id="outAddress"></span></div>
-					<button id="downloadBtn">⬇️ Download ID as PNG</button>
+				<div class="idcard-header">
+					<div class="idcard-badge">
+						<div class="idcard-badge-circle">18+</div>
+						<div class="idcard-badge-text">
+							<span
+								>EYTEEN PLUS<br />MEMBER <span style="color:#bdbdbd;">$18+</span
+								></span
+							>
+						</div>
+					</div>
+					<div class="idcard-title">A TOTALLY NOT FAKE ID</div>
+				</div>
+				<div class="idcard-body">
+					<div class="idcard-main-row">
+						<div class="idcard-info-col">
+							<table class="idcard-info-table">
+								<tr
+									><td class="idcard-label">NAME</td><td class="idcard-value"
+										><span id="cardName"></span></td
+									></tr
+								>
+								<tr
+									><td class="idcard-label">SEX</td><td class="idcard-value"
+										><span id="cardSex"></span></td
+									></tr
+								>
+								<tr
+									><td class="idcard-label">AGE</td><td class="idcard-value"
+										><span id="cardAge"></span></td
+									></tr
+								>
+								<tr
+									><td class="idcard-label">JOB</td><td class="idcard-value"
+										><span id="cardJob"></span></td
+									></tr
+								>
+								<tr
+									><td class="idcard-label">HAIR</td><td class="idcard-value"
+										><span id="cardHair"></span></td
+									></tr
+								>
+								<tr
+									><td class="idcard-label">EYES</td><td class="idcard-value"
+										><span id="cardEyes"></span></td
+									></tr
+								>
+								<tr
+									><td class="idcard-label">ETHNICITY</td><td
+										class="idcard-value"><span id="cardEthnicity"></span></td
+									></tr
+								>
+								<tr
+									><td class="idcard-label">ADDRESS</td><td class="idcard-value"
+										><span id="cardAddress"></span></td
+									></tr
+								>
+							</table>
+						</div>
+						<div class="idcard-photo-col">
+							<div class="idcard-photo-frame-large">
+								<img id="cardPhoto" src="/id-placeholder.jpg" alt="ID Photo" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="idcard-license-uses">
+					<div class="idcard-license-title">
+						You Can Use This License For Many Things.
+					</div>
+					<div class="idcard-license-list">
+						Access to the Eyteen Plus X Community &nbsp;|&nbsp; Talk to the 18+
+						Grok Companions (Ani &amp; Bad Rudi) &nbsp;|&nbsp; OnlyFans
+						&nbsp;|&nbsp; KYC &nbsp;|&nbsp; Get into a strip club &nbsp;|&nbsp;
+						Buy Alcohol &nbsp;|&nbsp; Renting A Car &nbsp;|&nbsp; Voting
+					</div>
 				</div>
 			</section>
+			<button
+				id="downloadBtn"
+				class="idcard-download-btn"
+				style="display:none; margin: 2em auto 0 auto;"
+				>⬇️ Download ID as PNG</button
+			>
 
 			<footer class="footer">
 				<p>YOU CAN USE THIS LICENSE FOR MANY THINGS:</p>
@@ -161,12 +238,22 @@ import "../styles/global.css";
 			<script is:inline>
 				window.addEventListener("DOMContentLoaded", () => {
 					const form = document.getElementById("eyteenForm");
-					const previewImg = document.getElementById("previewImg");
 					const idCard = document.getElementById("idCard");
 					const downloadBtn = document.getElementById("downloadBtn");
 					const jobDropdown = document.getElementById("job");
 					const customJobField = document.getElementById("customJobLabel");
 					const dalleBtn = document.getElementById("generateDalle");
+					const loadingWarning = document.getElementById("loading-warning");
+
+					const cardName = document.getElementById("cardName");
+					const cardSex = document.getElementById("cardSex");
+					const cardAge = document.getElementById("cardAge");
+					const cardJob = document.getElementById("cardJob");
+					const cardHair = document.getElementById("cardHair");
+					const cardEyes = document.getElementById("cardEyes");
+					const cardEthnicity = document.getElementById("cardEthnicity");
+					const cardAddress = document.getElementById("cardAddress");
+					const cardPhoto = document.getElementById("cardPhoto");
 
 					jobDropdown.addEventListener("change", () => {
 						customJobField.style.display =
@@ -198,6 +285,46 @@ import "../styles/global.css";
 						return `${streetNum} ${streetName}, ${city}, ${state} ${zip}`;
 					}
 
+					function showIDCardWithData({
+						name,
+						sex,
+						age,
+						job,
+						hair,
+						eyes,
+						ethnicity,
+						address,
+						photoUrl,
+					}) {
+						console.log("showIDCardWithData called with:", {
+							name,
+							sex,
+							age,
+							job,
+							hair,
+							eyes,
+							ethnicity,
+							address,
+							photoUrl,
+						});
+						document.getElementById("cardName").textContent = name;
+						document.getElementById("cardSex").textContent = sex;
+						document.getElementById("cardAge").textContent = age;
+						document.getElementById("cardJob").textContent = job;
+						document.getElementById("cardHair").textContent = hair;
+						document.getElementById("cardEyes").textContent = eyes;
+						document.getElementById("cardEthnicity").textContent = ethnicity;
+						document.getElementById("cardAddress").textContent = address;
+						if (photoUrl) {
+							document.getElementById("cardPhoto").src = photoUrl;
+						} else {
+							document.getElementById("cardPhoto").src = "/id-placeholder.jpg";
+						}
+						form.style.display = "none";
+						idCard.style.display = "block";
+						downloadBtn.style.display = "block";
+					}
+
 					form.addEventListener("submit", (e) => {
 						e.preventDefault();
 
@@ -212,23 +339,17 @@ import "../styles/global.css";
 								? document.getElementById("customJob").value
 								: jobDropdown.value;
 
-						document.getElementById("outName").textContent =
-							document.getElementById("name").value;
-						document.getElementById("outSex").textContent =
-							document.getElementById("sex").value;
-						document.getElementById("outAge").textContent = age;
-						document.getElementById("outHair").textContent =
-							document.getElementById("hair").value;
-						document.getElementById("outEyes").textContent =
-							document.getElementById("eyes").value;
-						document.getElementById("outEthnicity").textContent =
-							document.getElementById("ethnicity").value;
-						document.getElementById("outJob").textContent = job;
-						document.getElementById("outAddress").textContent =
-							generateRandomAddress();
-
-						form.style.display = "none";
-						idCard.style.display = "block";
+						showIDCardWithData({
+							name: document.getElementById("name").value,
+							sex: document.getElementById("sex").value,
+							age,
+							job,
+							hair: document.getElementById("hair").value,
+							eyes: document.getElementById("eyes").value,
+							ethnicity: document.getElementById("ethnicity").value,
+							address: generateRandomAddress(),
+							photoUrl: document.getElementById("cardPhoto").src,
+						});
 					});
 
 					document
@@ -237,12 +358,35 @@ import "../styles/global.css";
 							const file = event.target.files[0];
 							if (file) {
 								const reader = new FileReader();
-								reader.onload = () => (previewImg.src = reader.result);
+								reader.onload = () => {
+									document.getElementById("cardPhoto").src = reader.result;
+									// Show card immediately on upload
+									const age = parseInt(
+										document.getElementById("age").value,
+										10,
+									);
+									const job =
+										jobDropdown.value === "custom"
+											? document.getElementById("customJob").value
+											: jobDropdown.value;
+									showIDCardWithData({
+										name: document.getElementById("name").value,
+										sex: document.getElementById("sex").value,
+										age,
+										job,
+										hair: document.getElementById("hair").value,
+										eyes: document.getElementById("eyes").value,
+										ethnicity: document.getElementById("ethnicity").value,
+										address: generateRandomAddress(),
+										photoUrl: reader.result,
+									});
+								};
 								reader.readAsDataURL(file);
 							}
 						});
 
 					dalleBtn.addEventListener("click", async () => {
+						loadingWarning.style.display = "block";
 						dalleBtn.textContent = "🎨 Generating...";
 						dalleBtn.disabled = true;
 
@@ -251,13 +395,14 @@ import "../styles/global.css";
 						const ethnicity = document.getElementById("ethnicity").value || "";
 						const hair = document.getElementById("hair").value || "";
 						const eyes = document.getElementById("eyes").value || "";
-						const style =
-							document.getElementById("style").value || "digital painting";
 						const job =
 							jobDropdown.value === "custom"
 								? document.getElementById("customJob").value || "job"
 								: jobDropdown.value;
-
+						const age = parseInt(document.getElementById("age").value, 10);
+						const address = generateRandomAddress();
+						const style =
+							document.getElementById("style").value || "digital painting";
 						const prompt = `${style} headshot ID photo of a ${sex.toLowerCase()} ${ethnicity.toLowerCase()} with ${hair.toLowerCase()} hair and ${eyes.toLowerCase()} eyes, profession: ${job.toLowerCase()}, name: ${name}, white background, centered face`;
 
 						try {
@@ -268,7 +413,19 @@ import "../styles/global.css";
 							});
 							const data = await res.json();
 							if (data.imageUrl) {
-								previewImg.src = data.imageUrl;
+								document.getElementById("cardPhoto").src = data.imageUrl;
+								// Show card immediately on DALL·E image ready
+								showIDCardWithData({
+									name,
+									sex,
+									age,
+									job,
+									hair,
+									eyes,
+									ethnicity,
+									address,
+									photoUrl: data.imageUrl,
+								});
 							} else {
 								throw new Error("No image URL returned");
 							}
@@ -277,20 +434,32 @@ import "../styles/global.css";
 							alert(
 								"⚠️ DALL·E image generation failed — using placeholder instead.",
 							);
-							previewImg.src = "/id-placeholder.jpg";
+							document.getElementById("cardPhoto").src = "/id-placeholder.jpg";
 						} finally {
+							loadingWarning.style.display = "none";
 							dalleBtn.textContent = "🎨 Generate Image with DALL·E";
 							dalleBtn.disabled = false;
 						}
 					});
 
 					downloadBtn.addEventListener("click", () => {
-						html2canvas(idCard).then((canvas) => {
-							const link = document.createElement("a");
-							link.download = "Eyteen-ID.png";
-							link.href = canvas.toDataURL("image/png");
-							link.click();
-						});
+						// Wait for image to load before capturing
+						const cardImg = document.getElementById("cardPhoto");
+						if (!cardImg.complete) {
+							cardImg.onload = () => triggerDownload();
+						} else {
+							triggerDownload();
+						}
+						function triggerDownload() {
+							html2canvas(document.getElementById("idCard"), {
+								useCORS: true,
+							}).then((canvas) => {
+								const link = document.createElement("a");
+								link.download = "Eyteen-ID.png";
+								link.href = canvas.toDataURL("image/png");
+								link.click();
+							});
+						}
 					});
 				});
 			</script>
