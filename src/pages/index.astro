@@ -456,20 +456,33 @@ import "../styles/global.css";
 								body: JSON.stringify({ prompt }),
 							});
 							const data = await res.json();
+
 							if (data.imageUrl) {
-								document.getElementById("cardPhoto").src = data.imageUrl;
-								// Show card immediately on DALL·E image ready
-								showIDCardWithData({
-									name,
-									sex,
-									age,
-									job,
-									hair,
-									eyes,
-									ethnicity,
-									address,
-									photoUrl: data.imageUrl,
-								});
+								try {
+									// Convert the image to a CORS-safe blob URL
+									const imgRes = await fetch(data.imageUrl);
+									const imgBlob = await imgRes.blob();
+									const objectUrl = URL.createObjectURL(imgBlob);
+
+									document.getElementById("cardPhoto").src = objectUrl;
+
+									showIDCardWithData({
+										name,
+										sex,
+										age,
+										job,
+										hair,
+										eyes,
+										ethnicity,
+										address,
+										photoUrl: objectUrl,
+									});
+								} catch (blobErr) {
+									console.error("Blob conversion failed:", blobErr);
+									alert("⚠️ Image loaded, but couldn't convert for download.");
+									document.getElementById("cardPhoto").src =
+										"/id-placeholder.jpg";
+								}
 							} else {
 								throw new Error("No image URL returned");
 							}
